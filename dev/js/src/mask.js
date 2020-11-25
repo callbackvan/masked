@@ -814,7 +814,11 @@ function hardSearch(value, mask_code) {
             /**
              * @var
              */
-            return Math.sign((a['mask'].match(/_/g) || []).length - (b['mask'].match(/_/g) || []).length);
+            if (a.obj.iso_code === 'il') {
+                return Math.sign((b['mask'].match(/_/g) || []).length - (a['mask'].match(/_/g) || []).length);
+            } else {
+                return Math.sign((a['mask'].match(/_/g) || []).length - (b['mask'].match(/_/g) || []).length);
+            }
         });
     }
 

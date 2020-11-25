@@ -2,7 +2,7 @@
 * Masked - v1.0.2 - 
 * 
 * @author Rashin Sergey 
-* @version 1.0.2 2018-01-31
+* @version 1.0.2 2020-11-25
 */
 
 
@@ -1908,7 +1908,11 @@ function hardSearch(value, mask_code) {
             /**
              * @var
              */
-            return Math.sign((a['mask'].match(/_/g) || []).length - (b['mask'].match(/_/g) || []).length);
+            if (a.obj.iso_code === 'il') {
+                return Math.sign((b['mask'].match(/_/g) || []).length - (a['mask'].match(/_/g) || []).length);
+            } else {
+                return Math.sign((a['mask'].match(/_/g) || []).length - (b['mask'].match(/_/g) || []).length);
+            }
         });
     }
 
